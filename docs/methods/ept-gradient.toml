@@ -1,0 +1,30 @@
+title = "Example of gradient EPT"
+description = "Heterogeneous phantom imaged at 7 T in pTx."
+method = 2
+
+[mesh]
+    size = [200,200,11]
+    step = [1e-3,1e-3,1e-3]
+
+[input]
+    frequency = 297e6
+    tx-channels = 8
+    rx-channels = 1
+    tx-sensitivity = 'heterogeneous-phantom-7t-ptx.h5:channels/>/tx_sens'
+    trx-phase = 'heterogeneous-phantom-7t-ptx.h5:channels/>/trx_phase'
+
+[output]
+    electric-conductivity = 'heterogeneous-phantom-7t-ptx-ept-gradient.h5:sigma'
+    relative-permittivity = 'heterogeneous-phantom-7t-ptx-ept-gradient.h5:epsr'
+
+[parameter.savitzky-golay]
+    size = [1,1,1]
+    shape = 0
+[parameter]
+    volume-tomography = false
+    imaging-slice = 5
+    full-run = true
+[parameter.seed-point]
+    coordinates = [100,10,5]
+    electric-conductivity = 0.5
+    relative-permittivity = 80.0

@@ -4,7 +4,7 @@ title: Home
 nav_order: 1
 description:
 permalink: /
-last_modified_date: 2020-07-23T16:15:25+02:00
+last_modified_date: 2020-07-30T10:40:39+02:00
 ---
 
 ![](/assets/images/logo-eptlib.png)
@@ -24,13 +24,26 @@ EPTlib is an open source, extensible collection of C++ implementations of electr
 
 [...]
 
+## The EPTlib application
+
+The EPTlib application allows applying the implemented EPT methods on input data.
+It is a terminal application that can be run by typing
+
+```bash
+EPTlib_app <filename>.toml
+```
+
+where ```<filename>``` must be replaced with the name of the configuration file for the case of interest.
+
+Details on the set-up of the configuration file are provided in the [Settings](settings) page.
+
 ## List of implemented methods
 
 The following methods are currently implemented in EPTlib and can be executed from the EPTlib application:
 
-1. [Helmholtz EPT](ept-helmholtz)
-1. [Convection-reaction EPT](ept-convreact)
-1. [Gradient EPT](ept-gradient)
+1. [Helmholtz EPT](methods/ept-helmholtz)
+1. [Convection-reaction EPT](methods/ept-convreact)
+1. [Gradient EPT](methods/ept-gradient)
 
 ---
 

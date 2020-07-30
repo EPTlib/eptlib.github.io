@@ -31,14 +31,15 @@ plugins:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - /docs/methods/savitzky-golay.md
 
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "/assets/images/logo-eptlib.png"
@@ -85,7 +86,7 @@ heading_anchors: true
 
 # Footer content 
 # appears at the bottom of every page's main content
-footer_content: "Copyright &copy; 2020 Alessandro Arduino. Distributed by an <a href=\"https://github.com/eptlib/eptlib.github.io/LICENSE\">MIT license.</a>"
+footer_content: "Copyright &copy; 2020 Alessandro Arduino. Distributed by an <a href=\"https://github.com/eptlib/eptlib.github.io/tree/master/LICENSE\">MIT license.</a>"
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter

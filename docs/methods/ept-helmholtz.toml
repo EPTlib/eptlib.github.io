@@ -1,0 +1,22 @@
+title = "Example of Helmholtz EPT"
+description = "Heterogeneous phantom imaged at 1.5 T. Phase-based approximation."
+method = 0
+
+[mesh]
+    size = [200,200,11]
+    step = [1e-3,1e-3,1e-3]
+
+[input]
+    frequency = 64e6
+    tx-channels = 1
+    rx-channels = 1
+#   tx-sensitivity = 'heterogeneous-phantom-15t.h5:tx_sens'
+    trx-phase = 'heterogeneous-phantom-15t.h5:trx_phase'
+
+[output]
+    electric-conductivity = 'heterogeneous-phantom-15t-ept-helmholtz.h5:sigma'
+#   relative-permittivity = 'heterogeneous-phantom-15t-ept-helmholtz.h5:epsr'
+
+[parameter.savitzky-golay]
+    size = [1,1,1]
+    shape = 0
