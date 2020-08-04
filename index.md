@@ -22,7 +22,9 @@ EPTlib is an open source, extensible collection of C++ implementations of electr
 
 ## Getting started
 
-[...]
+The binaries of EPTlib for different operative systems can be downloaded [here](https://github.com/EPTlib/eptlib/releases).
+
+Alternatively, EPTlib can be build directly from its [source](https://github.com/EPTlib/eptlib).
 
 ## The EPTlib application
 
