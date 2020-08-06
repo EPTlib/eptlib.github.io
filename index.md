@@ -51,7 +51,9 @@ The following methods are currently implemented in EPTlib and can be executed fr
 
 ## About the project
 
-EPTlib is &copy; {{ "now" | date: "%Y" }} by [Alessandro Arduino](http://github.com/alessandroarduino).
+EPTlib is &copy; {{ "now" | date: "%Y" }} by [Alessandro Arduino](http://github.com/alessandroarduino), INRiM.
+
+[![](/assets/images/logo-inrim.png)](https://www.inrim.eu){: .mb-4 .mb-md-0 target="_blank" }
 
 ### License
 
