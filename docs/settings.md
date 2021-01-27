@@ -66,6 +66,7 @@ The ```method``` is selected according to the following table.
     rx-channels = 4
     tx-sensitivity = "phantom.h5:/tx_sens>"
     trx-phase = "phantom.h5:/trx_phase><" # [rad]
+    wrapped-phase = false
 ```
 
 - ```frequency``` is the Larmor frequency of the input data in hertz.
@@ -73,6 +74,10 @@ The ```method``` is selected according to the following table.
 - ```rx-channels``` is the numbers of receive channels in the input data.
 - ```tx-sensitivity``` is the address of the transmit sensitivity (magnitude). It must be a dataset in an .h5 file.
 - ```trx-phase``` is the address in an .h5 file of the transceive phase in radians. It must be a dataset in an .h5 file.
+
+<object name="new" class="label">New!</object>
+
+- ```wrapped-phase``` is equal to ```true``` if the input transceive phase maps are wrapped. Currently, only the phase-based methods take advantage of it. (default: ```false```).
 
 For some EPT methods, the ```tx-sensitivity``` or the ```trx-phase``` could be optional.
 
