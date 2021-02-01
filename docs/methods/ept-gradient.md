@@ -11,8 +11,6 @@ last_modified_date: 2020-07-30T10:50:54+02:00
 
 # Gradient EPT
 {: .no_toc .fs-9 }
-Under development
-{: .label .label-yellow }
 
 EPT method for parallel transmission imaging systems. It requires that the input is acquired near the mid-plane of a longitudinally symmetric transmit coil.
 {: .fs-6 .fw-300 }
