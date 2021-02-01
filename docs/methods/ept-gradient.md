@@ -127,20 +127,37 @@ The following specific settings must be configured.
 
 {% include_relative savitzky-golay.md %}
 
-### Seed point
+### Seed point <object name="new" class="label">New!</object>
 
-Only one seed point can be set. The seed point is used only if the full run of gradient EPT is executed.
+Currently, only one seed point can be set. The seed point is used only if the full run of gradient EPT is executed.
 
 ```toml
 [parameter.seed-point]
+    use-seed-point = true
     coordinates = [15,20,25]
     electric-conductivity = 0.1 # [S/m]
     relative-permittivity = 50.0
 ```
 
+- ```use-seed-point``` is equal to ```true``` if a seed point is used for inverting the gradient (default: ```false```).
 - ```coordinates``` is the list of the integer coordinates of the voxel where the seed point is set (default: ```[0,0,0]```).
 - ```electric-conductivity``` is the value of the electric conductivity forced in the seed point in siemens per meter (default: ```0.0```).
 - ```relative-permittivity``` is the value of the relative permittivity forced in the seed point (default: ```1.0```).
+
+### Regularization <object name="new" class="label">New!</object>
+
+If the seed point is not used, the gradient is inverted with regularization based on the local estimation of the electric properties.
+
+```toml
+[parameter.regularization]
+    regularization-coefficient = 1e-3
+    gradient-tolerance = 0.1
+    output-mask = "example.h5:/mask"
+```
+
+- ```regularization-coefficient``` set the regularization coefficient (default: ```1.0```).
+- ```gradient-tolerance``` set the relative tolerance with respect to the maximum gradient for the determination of the homogeneous regions (default: ```0.0```).
+- ```output-mask``` is the address where the homogeneous regions mask will be written. It must be a dataset in an .h5 file.
 
 ### Other parameters
 

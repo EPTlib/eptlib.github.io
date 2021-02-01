@@ -10,7 +10,7 @@ last_modified_date: 2020-07-30T10:40:39+02:00
 ![](/assets/images/logo-eptlib.png)
 {: .text-center }
 
-# EPTlib
+# EPTlib v0.2.0
 {: .fs-9 }
 
 EPTlib is an open source, extensible collection of C++ implementations of electric properties tomography (EPT) methods.
@@ -24,7 +24,7 @@ EPTlib is an open source, extensible collection of C++ implementations of electr
 
 The binaries of EPTlib for different operative systems can be downloaded [here](https://github.com/EPTlib/eptlib/releases).
 
-Alternatively, EPTlib can be build directly from its [source](https://github.com/EPTlib/eptlib).
+Alternatively, EPTlib can be built directly from its [source](https://github.com/EPTlib/eptlib).
 
 ## The EPTlib application
 
@@ -51,7 +51,7 @@ The following methods are currently implemented in EPTlib and can be executed fr
 
 ## About the project
 
-EPTlib is &copy; {{ "now" | date: "%Y" }} by [Alessandro Arduino](http://github.com/alessandroarduino), INRiM.
+EPTlib is &copy; 2020-{{ "now" | date: "%Y" }} by [Alessandro Arduino](http://github.com/alessandroarduino), INRiM.
 
 [![](/assets/images/logo-inrim.png)](https://www.inrim.eu){: .mb-4 .mb-md-0 target="_blank" }
 
