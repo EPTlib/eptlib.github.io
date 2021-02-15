@@ -54,7 +54,7 @@ where $$B_{1,i}^{+,{\rm r} } = \vert B_{1,i}^+ \vert {\rm e}^{ {\rm i}\varphi_i^
 
 Thus, the starting equation can be elaborated by splitting the measurable and the unknown parts of the complex transmit sensitivity to obtain
 \$$
-\boxed{ -{\rm i} 2 \nabla B_{1,i}^{+,{\rm r} } \cdot \nabla \varphi_0^+ + \nabla B_{1,i}^{+,{\rm r} } \cdot \left( g_+, -{\rm r} g_+, g_z \right) + B_{1,i}^{+,{\rm r} } \vartheta^+ = \nabla^2 B_{1,i}^{+,{\rm r} } }\,,
+\boxed{ -{\rm i} 2 \nabla B_{1,i}^{+,{\rm r} } \cdot \nabla \varphi_0^+ + \nabla B_{1,i}^{+,{\rm r} } \cdot \left( g_+, -{\rm i} g_+, g_z \right) + B_{1,i}^{+,{\rm r} } \vartheta^+ = \nabla^2 B_{1,i}^{+,{\rm r} } }\,,
 \$$
 where $$\nabla \varphi_0^+$$, $$g_+$$, $$g_z$$ and $$\vartheta^+$$ are treated as algebraically independent unknowns. In particular, $$\vartheta^+ = -\omega^2 \mu_0 \tilde{\varepsilon} + \vert \nabla \varphi_0^+ \vert^2 - {\rm i} \nabla^2 \varphi_0^+ + {\rm i} \nabla \varphi_0^+ \cdot \left( g_+, -{\rm i} g_+, g_z \right)$$ collects all the non-linear unknown terms and its combination with the other unknown allows retrieving a first estimate of the electric properties $$\tilde{\varepsilon}$$.
 
