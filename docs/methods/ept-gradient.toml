@@ -26,6 +26,6 @@ method = 2
     full-run = true
 [parameter.seed-point]
     use-seed-point = true
-    coordinates = [100,10,5]
-    electric-conductivity = 0.5
-    relative-permittivity = 80.0
+    coordinates = [[100,10,5],]
+    electric-conductivity = [0.5,]
+    relative-permittivity = [80.0,]

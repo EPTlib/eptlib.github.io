@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-gradient
-last_modified_date: 2020-07-30T10:50:54+02:00
+last_modified_date: 2021-02-27T14:30:00+02:00
 ---
 
 # Gradient EPT
@@ -68,28 +68,28 @@ The solution of the previous system of equations provides in each voxel a first 
 The retrieved distributions of the derivatives can be elaborated to provide a global estimate of the electric properties.
 In the EPTlib application, the global estimate is obtained by solving the minimisation problem
 \$$
-    \boxed{ \tilde{\varepsilon} = {\rm argmin} \left( \left\vert g_+(\tilde{\varepsilon}) - g_{+,0} \right\vert^2 + \left\vert g_z(\tilde{\varepsilon}) - g_{z,0} \right\vert^2 \right) }\,,
+    \boxed{ \tilde{\varepsilon} = {\rm argmin} \left( \left\vert g_+(\tilde{\varepsilon}) - g_{+,0} \right\vert^2 + \left\vert g_z(\tilde{\varepsilon}) - g_{z,0} \right\vert^2 \right) }\,.
 \$$
-with the constraint of a given value of $$\tilde{\varepsilon}$$ in a selected voxel.
-The couple of the voxel and the associated constraint value of $$\tilde{\varepsilon}$$ is referred to as a _seed point_.
-
 The minimisation is performed by solving the associated linear Euler equation with the finite element method (FEM).
 
-Other techniques, that avoid the use of seed points by relying on the estimate $$\tilde{\varepsilon}_0$$ or on the result of other EPT methods, could be adopted, like the ones described in [[3](references)] or in [[4](references)], but they are not implemented in EPTlib, yet.
+The problem can be solved with a seed point constraint, where given values of $$\tilde{\varepsilon}$$ are constrained in some selected voxels, referred to as _seed points_.
+Otherwise, the problem can be solved with an additive regularization term which forces the distribution of $$\tilde{\varepsilon}$$ to be similar to $$\tilde{\varepsilon}_0$$ in some regions [[3](references)].
+
+Other techniques, like the ones described in [[4](references)], can be used, but they are not implemented in EPTlib, yet.
 
 ### Two-dimensional approximation
 
 In order to reduce the computational cost of the method, a two-dimensional approximated equation can be obtained by assuming that the properties are almost constant along the longitudinal direction (i.e., $$g_z \simeq 0$$) as well as the reference phase (i.e., $$\partial_z \varphi_0^+ \simeq 0$$). In this case, the equation for the local estimate is
 \$$
-    \boxed{ -{\rm i} 2 \nabla_{xy} B_{1,i}^{+,{\rm r} } \cdot \nabla_{xy} \varphi_0^+ + \nabla_{xy} B_{1,i}^{+,{\rm r} } \cdot \left( g_+, -{\rm r} g_+ \right) + B_{1,i}^{+,{\rm r} } \vartheta_{xy}^+ = \nabla^2 B_{1,i}^{+,{\rm r} } }\,,
+    \boxed{ -{\rm i} 2 \nabla_{xy} B_{1,i}^{+,{\rm r} } \cdot \nabla_{xy} \varphi_0^+ + \nabla_{xy} B_{1,i}^{+,{\rm r} } \cdot \left( g_+, -{\rm i} g_+ \right) + B_{1,i}^{+,{\rm r} } \vartheta_{xy}^+ = \nabla^2 B_{1,i}^{+,{\rm r} } }\,,
 \$$
-with $$\vartheta_{xy}^+ = -\omega^2\mu_0 \tilde{\varepsilon} + \|\nabla_{xy} \varphi_0^+ \|^2 - {\rm i} \nabla_{xy}^2 \varphi_0^+ + {\rm i} \nabla_{xy} \varphi_0^+ \cdot (g_+, -{\rm i}g_+)$$.
+with $$\vartheta_{xy}^+ = -\omega^2\mu_0 \tilde{\varepsilon} + |\nabla_{xy} \varphi_0^+ |^2 - {\rm i} \nabla_{xy}^2 \varphi_0^+ + {\rm i} \nabla_{xy} \varphi_0^+ \cdot (g_+, -{\rm i}g_+)$$.
 
 In this case, also the global estimate is performed in two dimensions by solving the minimisation problem
 \$$
     \boxed{ \tilde{\varepsilon} = {\rm argmin}\ \left\vert g_+(\tilde{\varepsilon}) - g_{+,0} \right\vert^2 }\,,
 \$$
-with the constraint provided by a seed point. In the latter equation, $$g_{+,0}$$ denotes the estimate of the derivative obtained by solving the previous linear system pixel-by-pixel.
+with the constraint provided by seed points or the additive regularization term. In the latter equation, $$g_{+,0}$$ denotes the estimate of the derivative obtained by solving the previous linear system pixel-by-pixel.
 
 ### Derivatives estimation
 
@@ -132,15 +132,15 @@ Currently, only one seed point can be set. The seed point is used only if the fu
 ```toml
 [parameter.seed-point]
     use-seed-point = true
-    coordinates = [15,20,25]
-    electric-conductivity = 0.1 # [S/m]
-    relative-permittivity = 50.0
+    coordinates = [[15,20,25], [25,20,15]]
+    electric-conductivity = [0.1, 0.2] # [S/m]
+    relative-permittivity = [50.0, 70.0]
 ```
 
 - ```use-seed-point``` is equal to ```true``` if a seed point is used for inverting the gradient (default: ```false```).
-- ```coordinates``` is the list of the integer coordinates of the voxel where the seed point is set (default: ```[0,0,0]```).
-- ```electric-conductivity``` is the value of the electric conductivity forced in the seed point in siemens per meter (default: ```0.0```).
-- ```relative-permittivity``` is the value of the relative permittivity forced in the seed point (default: ```1.0```).
+- ```coordinates``` is the list of the integer coordinates of the voxels where the seed points are set. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
+- ```electric-conductivity``` is the list of the values of the electric conductivity forced in the seed points in siemens per meter. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
+- ```relative-permittivity``` is the list of the values of the relative permittivity forced in the seed points. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
 
 ### Regularization <object name="new" class="label">New!</object>
 
@@ -155,7 +155,7 @@ If the seed point is not used, the gradient is inverted with regularization base
 
 - ```regularization-coefficient``` set the regularization coefficient (default: ```1.0```).
 - ```gradient-tolerance``` set the relative tolerance with respect to the maximum gradient for the determination of the homogeneous regions (default: ```0.0```).
-- ```output-mask``` is the address where the homogeneous regions mask will be written. It must be a dataset in an .h5 file.
+- ```output-mask``` is the address where the homogeneous regions mask will be written. It must be a dataset in an .h5 file. If omitted, the mask will not be stored.
 
 ### Other parameters
 
