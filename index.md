@@ -47,6 +47,12 @@ The following methods are currently implemented in EPTlib and can be executed fr
 1. [Convection-reaction EPT](methods/ept-convreact)
 1. [Gradient EPT](methods/ept-gradient)
 
+## Citations
+
+If you use EPTlib in your work, please cite:
+"A. Arduino. EPTlib: an open-source extensible collection of electric properties tomography techniques. *Applied Sciences*, 11(7):3237, 2021.
+DOI: [10.3390/app11073237](https://doi.org/10.3390/app11073237)"
+
 ---
 
 ## About the project
