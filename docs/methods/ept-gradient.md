@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-gradient
-last_modified_date: 2021-02-27T14:30:00+02:00
+last_modified_date: 2021-06-03T12:30:00+02:00
 ---
 
 # Gradient EPT
@@ -125,9 +125,9 @@ The following specific settings must be configured.
 
 {% include_relative savitzky-golay.md %}
 
-### Seed point <object name="new" class="label">New!</object>
+### Seed points <object name="new" class="label">New!</object>
 
-Currently, only one seed point can be set. The seed point is used only if the full run of gradient EPT is executed.
+The seed points are used only if the full run of gradient EPT is executed.
 
 ```toml
 [parameter.seed-point]
@@ -137,7 +137,7 @@ Currently, only one seed point can be set. The seed point is used only if the fu
     relative-permittivity = [50.0, 70.0]
 ```
 
-- ```use-seed-point``` is equal to ```true``` if a seed point is used for inverting the gradient (default: ```false```).
+- ```use-seed-point``` is equal to ```true``` if seed points are used for inverting the gradient (default: ```false```).
 - ```coordinates``` is the list of the integer coordinates of the voxels where the seed points are set. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
 - ```electric-conductivity``` is the list of the values of the electric conductivity forced in the seed points in siemens per meter. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
 - ```relative-permittivity``` is the list of the values of the relative permittivity forced in the seed points. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
