@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-convreact
-last_modified_date: 2020-07-30T10:55:56+02:00
+last_modified_date: 2021-11-22T10:02:02.251Z
 ---
 
 # Convection-reaction EPT
@@ -34,7 +34,7 @@ For biological tissues, whose magnetic permeability can be reasonably assumed co
 \$$
 	\nabla\times\left(\tilde{\varepsilon}^{-1} \nabla\times{\bf H} \right) = \omega^2\mu_0{\bf H}\,.
 \$$
-In the latter, $$\omega$$ is the harmonic frequency of the electromagnetic radiation (i.e., the Larmor frequency) and $$\tilde{\varepsilon} = \varepsilon_{\rm r} \varepsilon_0 - {\rm i} \sigma/\omega$$ is the complex permittivity, which is defined by means of the vacuum permittivity $$\varepsilon_0$$ and of the two electric properties: the _relative permittivity_ $$\varepsilon_{\rm r}$$ and the _electric conductivity_ $$\sigma$$.
+In the latter, $$\omega$$ is the angular frequency of the electromagnetic radiation (i.e., the Larmor angular frequency) and $$\tilde{\varepsilon} = \varepsilon_{\rm r} \varepsilon_0 - {\rm i} \sigma/\omega$$ is the complex permittivity, which is defined by means of the vacuum permittivity $$\varepsilon_0$$ and of the two electric properties: the _relative permittivity_ $$\varepsilon_{\rm r}$$ and the _electric conductivity_ $$\sigma$$.
 
 By introducing the unknown variable $$\gamma = \tilde{\varepsilon}^{-1}$$, the previous equation can be rewritten as
 \$$
@@ -76,7 +76,7 @@ Analogously to the complete equation obtained for the transmit sensitivity $$B_1
 \$$
 	\nabla \cdot \left( \gamma {\bf v}^- \right) = -\omega^2 \mu_0 B_1^-\,,
 \$$
-holds with $${\bf v}^+ = \nabla B_1^- + {\rm i} \nabla \times \left( B_1^- \hat{z} \right)$$, $$B_1^- = \mu_0 H^-$$ the complex receive sensitivity and 
+holds with $${\bf v}^- = \nabla B_1^- + {\rm i} \nabla \times \left( B_1^- \hat{z} \right)$$, $$B_1^- = \mu_0 H^-$$ the complex receive sensitivity and 
 \$$
 	H^- = \frac{H_x - {\rm i} H_y}{2}\,.
 \$$
@@ -170,9 +170,9 @@ The boundary condition set the value of the electric properties at the boundary 
 ```
 
 - ```volume-tomography``` is equal to ```true``` to solve the three-dimensional problem; otherwise, for the two-dimensional approximation, it is equal to ```false``` (default: ```false```).
-- ```imaging-slice``` is the index of the slice on which perform the two-dimensional tomography. Must be set only if ```volume-tomography``` is ```false``` (default: the index of the mid-plane).
+- ```imaging-slice``` is the index of the slice on which the two-dimensional tomography will be performed. It must be set only if ```volume-tomography``` is ```false``` (default: the index of the mid-plane).
 - ```artificial-diffusion``` is equal to ```true``` to add the artificial diffusion term to stabilize the problem; otherwise it is equal to ```false``` (default: ```false```).
-- ```artificial-diffusion-coefficient``` is equal to the value of the artificial diffusion coefficient. Must be set only if ```artificial-diffusion``` is ```true``` (default: ```0.0```).
+- ```artificial-diffusion-coefficient``` is equal to the value of the artificial diffusion coefficient expressed in tesla (for the complete case) or in radian (for the phase-based approximation). It must be set only if ```artificial-diffusion``` is ```true``` (default: ```0.0```).
 
 ## Example
 

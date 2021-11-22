@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-helmholtz
-last_modified_date: 2020-07-30T10:48:17+02:00
+last_modified_date: 2021-11-22T10:02:08.085Z
 ---
 
 # Helmholtz EPT
@@ -33,7 +33,7 @@ For biological tissues, whose magnetic permeability can be reasonably assumed co
 \$$
 	\nabla\times\left(\tilde{\varepsilon}^{-1} \nabla\times{\bf H} \right) = \omega^2\mu_0{\bf H}\,.
 \$$
-In the latter, $$\omega$$ is the harmonic frequency of the electromagnetic radiation (i.e., the Larmor frequency) and $$\tilde{\varepsilon} = \varepsilon_{\rm r} \varepsilon_0 - {\rm i} \sigma/\omega$$ is the complex permittivity, which is defined by means of the vacuum permittivity $$\varepsilon_0$$ and of the two electric properties: the _relative permittivity_ $$\varepsilon_{\rm r}$$ and the _electric conductivity_ $$\sigma$$.
+In the latter, $$\omega$$ is the angular frequency of the electromagnetic radiation (i.e., the Larmor angular frequency) and $$\tilde{\varepsilon} = \varepsilon_{\rm r} \varepsilon_0 - {\rm i} \sigma/\omega$$ is the complex permittivity, which is defined by means of the vacuum permittivity $$\varepsilon_0$$ and of the two electric properties: the _relative permittivity_ $$\varepsilon_{\rm r}$$ and the _electric conductivity_ $$\sigma$$.
 
 In regions where the electric properties are almost homogeneous (like within a biological tissue), the previous equation can be elaborated to provide the Helmholtz equation
 \$$

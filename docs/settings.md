@@ -4,7 +4,7 @@ title: Settings
 nav_order: 2
 description:
 permalink: /settings
-last_modified_date: 2020-07-30T10:44:37+02:00
+last_modified_date: 2021-11-22T10:02:13.694Z
 ---
 
 # Configuration file settings
@@ -70,8 +70,8 @@ The ```method``` is selected according to the following table.
 ```
 
 - ```frequency``` is the Larmor frequency of the input data in hertz.
-- ```tx-channels``` is the numbers of transmit channels in the input data.
-- ```rx-channels``` is the numbers of receive channels in the input data.
+- ```tx-channels``` is the number of transmit channels in the input data.
+- ```rx-channels``` is the number of receive channels in the input data.
 - ```tx-sensitivity``` is the address of the transmit sensitivity (magnitude). It must be a dataset in an .h5 file.
 - ```trx-phase``` is the address in an .h5 file of the transceive phase in radians. It must be a dataset in an .h5 file.
 - ```wrapped-phase``` is equal to ```true``` if the input transceive phase maps are wrapped. Currently, only the phase-based methods take advantage of it. (default: ```false```).

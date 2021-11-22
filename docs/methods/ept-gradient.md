@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-gradient
-last_modified_date: 2021-06-03T12:30:00+02:00
+last_modified_date: 2021-11-22T10:01:42.918Z
 ---
 
 # Gradient EPT
@@ -39,7 +39,7 @@ For convenience, the convection-reaction EPT equation is rewritten, for the $$i$
 \$$
 where $$g_+ = g_x + {\rm i} g_y$$ and $${\bf g} = \nabla \log(\tilde{\varepsilon})$$.
 
-The problem with parallel transmission is that, in general, it is impossible to estimate the complex transmit sensitivity $$B_{1,i}^+$$, because there is no way deduce the phase of the $$i$$-th transmit sensitivity $$\varphi^+_i$$ from the measured transceive phase $$\varphi^\pm_i = \varphi^+_i + \varphi^-$$, which entangles $$\varphi^+_i$$ with the phase of the receive sensitivity $$\varphi^-$$.
+The problem with parallel transmission is that, in general, it is impossible to estimate the complex transmit sensitivity $$B_{1,i}^+$$, because there is no way to deduce the phase of the $$i$$-th transmit sensitivity $$\varphi^+_i$$ from the measured transceive phase $$\varphi^\pm_i = \varphi^+_i + \varphi^-$$, which entangles $$\varphi^+_i$$ with the phase of the receive sensitivity $$\varphi^-$$.
 
 However, being the receive sensitivity the same in all the acquired transceive phases, it is possible to estimate the relative phases as
 \$$
@@ -153,7 +153,7 @@ If the seed point is not used, the gradient is inverted with regularization base
     output-mask = "example.h5:/mask"
 ```
 
-- ```regularization-coefficient``` set the regularization coefficient (default: ```1.0```).
+- ```regularization-coefficient``` set the regularization coefficient in unit per square meter (default: ```1.0```).
 - ```gradient-tolerance``` set the relative tolerance with respect to the maximum gradient for the determination of the homogeneous regions (default: ```0.0```).
 - ```output-mask``` is the address where the homogeneous regions mask will be written. It must be a dataset in an .h5 file. If omitted, the mask will not be stored.
 
@@ -167,7 +167,7 @@ If the seed point is not used, the gradient is inverted with regularization base
 ```
 
 - ```volume-tomography``` is equal to ```true``` to solve the three-dimensional problem, otherwise, for the two-dimensional approximation, it is equal to ```false``` (default: ```false```).
-- ```imaging-slice``` is the index of the slice on which perform the two-dimensional tomography. Must be set only if ```volume-tomography``` is ```false``` (default: the index of the mid-plane).
+- ```imaging-slice``` is the index of the slice on which the two-dimensional tomography will be performed. It must be set only if ```volume-tomography``` is ```false``` (default: the index of the mid-plane).
 - ```full-run``` is equal to ```true``` to execute the full run of gradient EPT; otherwise, it is equal to ```false``` to stop the execution after the first local estimate of the electric properties (default: ```true```).
 This feature is useful in experimenting with the method implementation. It will probably be removed in a future release of the software.
 
