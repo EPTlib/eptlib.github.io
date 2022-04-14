@@ -3,8 +3,8 @@ description = "Heterogeneous phantom imaged at 1.5 T. Phase-based approximation.
 method = 0
 
 [mesh]
-    size = [200,200,11]
-    step = [1e-3,1e-3,1e-3]
+    size = [200, 200, 11]
+    step = [1e-3, 1e-3, 1e-3]
 
 [input]
     frequency = 64e6
@@ -18,5 +18,5 @@ method = 0
 #   relative-permittivity = 'heterogeneous-phantom-15t-ept-helmholtz.h5:epsr'
 
 [parameter.savitzky-golay]
-    size = [1,1,1]
+    size = [1, 1, 1]
     shape = 0

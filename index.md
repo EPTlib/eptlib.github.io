@@ -4,13 +4,13 @@ title: Home
 nav_order: 1
 description:
 permalink: /
-last_modified_date: 2021-04-06T14:49:00+02:00
+last_modified_date: 2022-04-14T11:40:06+0200
 ---
 
 ![](/assets/images/logo-eptlib.png)
 {: .text-center }
 
-# EPTlib v0.2.2
+# EPTlib v0.3.0
 {: .fs-9 }
 
 EPTlib is an open source, extensible collection of C++ implementations of electric properties tomography (EPT) methods.
@@ -41,11 +41,15 @@ Details on the set-up of the configuration file are provided in the [Settings](s
 
 ## List of implemented methods
 
-The following methods are currently implemented in EPTlib and can be executed from the EPTlib application:
+The following methods are currently implemented in EPTlib and can be executed from the EPTlib application.
 
+Stable methods:
 1. [Helmholtz EPT](methods/ept-helmholtz)
 1. [Convection-reaction EPT](methods/ept-convreact)
 1. [Gradient EPT](methods/ept-gradient)
+
+Experimental methods:
+1. [Phase-based Helmholtz EPT with automatically selected kernels](methods/ept-helmholtz-chi2)
 
 ## Citations
 

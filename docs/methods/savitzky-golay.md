@@ -1,15 +1,17 @@
-### Savitzky-Golay filter
+### Savitzky-Golay filter <object name="new" class="label">New!</object>
 
 The Savitzky-Golay filter can be applied on kernels with different size and shape.
 
 ```toml
 [parameter.savitzky-golay]
-    size = [2,2,1]
+    size = [2, 2, 1]
     shape = 0
+    degree = 2
 ```
 
 - ```size``` is the number of voxels along each semi-axis of the kernel (default: ```[1,1,1]```).
 - ```shape``` selects the kernel shape according to the following table (default: ```0```).
+- ```degree``` is the degree of the interpolating polynomial. It must be at least 2 (default: ```2```).
 
 | Code | Shape     | Example with ```size = [2,2,1]```                                        |
 |------+-----------+--------------------------------------------------------------------------|

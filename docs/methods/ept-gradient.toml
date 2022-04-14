@@ -3,8 +3,8 @@ description = "Heterogeneous phantom imaged at 7 T in pTx."
 method = 2
 
 [mesh]
-    size = [200,200,11]
-    step = [1e-3,1e-3,1e-3]
+    size = [200, 200, 11]
+    step = [1e-3, 1e-3, 1e-3]
 
 [input]
     frequency = 297e6
@@ -18,7 +18,7 @@ method = 2
     relative-permittivity = 'heterogeneous-phantom-7t-ptx-ept-gradient.h5:epsr'
 
 [parameter.savitzky-golay]
-    size = [1,1,1]
+    size = [1, 1, 1]
     shape = 0
 [parameter]
     volume-tomography = false
@@ -26,6 +26,6 @@ method = 2
     full-run = true
 [parameter.seed-point]
     use-seed-point = true
-    coordinates = [[100,10,5],]
-    electric-conductivity = [0.5,]
-    relative-permittivity = [80.0,]
+    coordinates = [[100, 10, 5], ]
+    electric-conductivity = [0.5, ]
+    relative-permittivity = [80.0, ]

@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-gradient
-last_modified_date: 2021-11-22T10:01:42.918Z
+last_modified_date: 2022-04-14T13:57:12+0200
 ---
 
 # Gradient EPT
@@ -125,14 +125,14 @@ The following specific settings must be configured.
 
 {% include_relative savitzky-golay.md %}
 
-### Seed points <object name="new" class="label">New!</object>
+### Seed points
 
 The seed points are used only if the full run of gradient EPT is executed.
 
 ```toml
 [parameter.seed-point]
     use-seed-point = true
-    coordinates = [[15,20,25], [25,20,15]]
+    coordinates = [[15, 20, 25], [25, 20, 15]]
     electric-conductivity = [0.1, 0.2] # [S/m]
     relative-permittivity = [50.0, 70.0]
 ```
@@ -142,7 +142,7 @@ The seed points are used only if the full run of gradient EPT is executed.
 - ```electric-conductivity``` is the list of the values of the electric conductivity forced in the seed points in siemens per meter. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
 - ```relative-permittivity``` is the list of the values of the relative permittivity forced in the seed points. This setting is mandatory if ```use-seed-point``` is true, otherwise it is ignored.
 
-### Regularization <object name="new" class="label">New!</object>
+### Regularization
 
 If the seed point is not used, the gradient is inverted with regularization based on the local estimation of the electric properties.
 
@@ -157,19 +157,21 @@ If the seed point is not used, the gradient is inverted with regularization base
 - ```gradient-tolerance``` set the relative tolerance with respect to the maximum gradient for the determination of the homogeneous regions (default: ```0.0```).
 - ```output-mask``` is the address where the homogeneous regions mask will be written. It must be a dataset in an .h5 file. If omitted, the mask will not be stored.
 
-### Other parameters
+### Other parameters <object name="new" class="label">New!</object>
 
 ```toml
 [parameter]
     volume-tomography = false
     imaging-slice = 3
     full-run = true
+    output-gradient = "example.h5:/grad"
 ```
 
 - ```volume-tomography``` is equal to ```true``` to solve the three-dimensional problem, otherwise, for the two-dimensional approximation, it is equal to ```false``` (default: ```false```).
 - ```imaging-slice``` is the index of the slice on which the two-dimensional tomography will be performed. It must be set only if ```volume-tomography``` is ```false``` (default: the index of the mid-plane).
 - ```full-run``` is equal to ```true``` to execute the full run of gradient EPT; otherwise, it is equal to ```false``` to stop the execution after the first local estimate of the electric properties (default: ```true```).
 This feature is useful in experimenting with the method implementation. It will probably be removed in a future release of the software.
+- ```output-gradient``` is the address where the gradient computed in the local step will be written. It must be a group in an .h5 file. Real and imaginary part of $$g_{+,0}$$ will be written in the group as ```/gplus/real``` and ```/gplus/imag```, respectively. If also $$g_{z,0}$$ is computed, it will be written in the group as ```/gz/real``` and ```/gz/imag```. If omitted, the gradient will not be stored.
 
 ## Example
 
