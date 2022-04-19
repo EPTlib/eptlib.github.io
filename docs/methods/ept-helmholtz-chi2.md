@@ -61,7 +61,7 @@ A list of kernels (characterised by the size and the shape) on which the Savitzk
     sizes = [[2, 2, 1], [3, 3, 1], [3, 3, 1]]
     shapes = [1, 1, 2]
     degree = 2
-	output-index = "example.h5:/index"
+    output-index = "example.h5:/index"
 ```
 
 - ```sizes``` is the list of the sizes of the kernels. The size defines the number of voxels along each semi-axis of the kernel. This setting is mandatory.
