@@ -79,7 +79,25 @@ A list of kernels (characterised by the size and the shape) on which the Savitzk
 
 ```toml
 [parameter]
+    unphysical-values = false
     output-variance = "example.h5:/var"
 ```
 
+- ```unphysical-values``` is equal to ```true``` if unphysical values (i.e., non-negative values) of the electric conductivity are admitted. (default: ```false```).
 - ```output-variance``` is the address where the variance evaluated for the electric conductivity will be written. It must be a dataset in an .h5 file. If omitted, the variance will not be stored.
+
+## Example
+
+The following configuration file is used to perform the phase-based Helmholtz EPT with automatically selected kernel of a heterogeneous phantom. The input transceive phase has been obtained by simulating the phantom in a birdcage body coil at 64 MHz, that is the Larmor frequency of a 1.5 T scanner.
+
+The configuration file can be downloaded [here](/assets/examples/ept-helmholtz-chi2.toml).
+The input .h5 file containing the data can be downloaded [here](/assets/examples/heterogeneous-phantom-15t.h5).
+
+```toml
+{% include_relative ept-helmholtz-chi2.toml %}
+```
+
+The retrieved distribution of the electric conductivity is pictured in the following image, together with the expected distribution, the input transceive phase, the selected kernel index and the pixel-wise uncertainty (square root of the electric conductivity pixel-wise variance).
+Because of the hypothesis of local homogeneity of the electric properties that is at the basis of the Helmholtz EPT method, large errors occur at the boundary of the phantom inclusions. The evaluated variance recognises this error and the automatic system selects smaller kernels near to the boundaries.
+
+![](/assets/images/ept-helmholtz-chi2.png)

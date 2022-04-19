@@ -1,0 +1,25 @@
+title = "Example of phase-based Helmholtz EPT with automatically selected kernel"
+description = "Heterogeneous phantom imaged at 1.5 T."
+method = 100
+
+[mesh]
+    size = [200, 200, 11]
+    step = [1e-3, 1e-3, 1e-3]
+
+[input]
+    frequency = 64e6
+    tx-channels = 1
+    rx-channels = 1
+    trx-phase = 'heterogeneous-phantom-15t.h5:trx_phase'
+
+[output]
+    electric-conductivity = 'heterogeneous-phantom-15t-ept-helmholtz-chi2.h5:sigma'
+
+[parameter.savitzky-golay]
+    sizes = [[2, 2, 2], [3, 3, 3], [4, 4, 4]]
+    shapes = [1, 1, 1]
+    output-index = 'heterogeneous-phantom-15t-ept-helmholtz-chi2.h5:index'
+
+[parameter]
+    unphysical-values = true
+    output-variance = "heterogeneous-phantom-15t-ept-helmholtz-chi2.h5:var"
