@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-helmholtz
-last_modified_date: 2021-11-22T10:02:08.085Z
+last_modified_date: 2022-04-14T14:42:24+0200
 ---
 
 # Helmholtz EPT
@@ -122,6 +122,15 @@ Moreover, ```tx-channel``` and ```rx-channel``` must be equal to 1.
 The following specific settings must be configured.
 
 {% include_relative savitzky-golay.md %}
+
+### Other parameters <object name="new" class="label">New!</object>
+
+```toml
+[parameter]
+    output-variance = "example.h5:/var"
+```
+
+- ```output-variance``` is the address where the variance evaluated for the electric conductivity will be written. It must be a dataset in an .h5 file. If omitted, the variance will not be stored (not even evaluated). The variance is evaluated only for the phase-based approximation with an unwrapped phase input.
 
 ## Example
 

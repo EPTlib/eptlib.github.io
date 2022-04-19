@@ -4,7 +4,7 @@ title: Settings
 nav_order: 2
 description:
 permalink: /settings
-last_modified_date: 2021-11-22T10:02:13.694Z
+last_modified_date: 2022-04-14T13:40:03+0200
 ---
 
 # Configuration file settings
@@ -32,7 +32,7 @@ description = "Just an example of configuration file"
 
 The ```title``` and the ```description``` will appear in the log of the EPTlib application.
 
-## Method
+## Method <object name="new" class="label">New!</object>
 
 ```toml
 method = 0
@@ -40,11 +40,14 @@ method = 0
 
 The ```method``` is selected according to the following table.
 
-| Code | Method                                           |
-|------+--------------------------------------------------|
-| 0    | [Helmholtz EPT](methods/ept-helmholtz)           |
-| 1    | [Convection-reaction EPT](methods/ept-convreact) |
-| 2    | [Gradient EPT](methods/ept-gradient)             |
+| Code | Method                                                                                     |
+|------+--------------------------------------------------------------------------------------------|
+| 0    | [Helmholtz EPT](methods/ept-helmholtz)                                                     |
+| 1    | [Convection-reaction EPT](methods/ept-convreact)                                           |
+| 2    | [Gradient EPT](methods/ept-gradient)                                                       |
+| 100  | [Phase-based Helmholtz EPT with automatically selected kernel](methods/ept-helmholtz-chi2) |
+
+Starting from the code 100, the implemented methods are still experimental.
 
 ## Mesh
 
@@ -57,7 +60,7 @@ The ```method``` is selected according to the following table.
 - ```size``` is the number of voxels of the input data in each direction.
 - ```step``` is the size of a voxel in meters.
 
-## Input <object name="new" class="label">New!</object>
+## Input
 
 ```toml
 [input]
