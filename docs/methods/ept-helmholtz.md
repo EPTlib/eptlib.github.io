@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-helmholtz
-last_modified_date: 2022-04-14T14:42:24+0200
+last_modified_date: 2022-06-10T11:04:45+0200
 ---
 
 # Helmholtz EPT
@@ -62,7 +62,7 @@ Another equivalent approach is followed in [[3](#references)].
 
 The complete equation for the relative permittivity is
 \$$
-\varepsilon_{\rm r} = -\frac{\nabla^2 \vert B_1^+ \vert}{\omega^2 \mu_0 \varepsilon_0 \vert B_1^+ \vert} + \frac{\vert \nabla^2 \varphi^+ \vert^2}{\omega^2 \mu_0 \varepsilon_0}\,,
+\varepsilon_{\rm r} = -\frac{\nabla^2 \vert B_1^+ \vert}{\omega^2 \mu_0 \varepsilon_0 \vert B_1^+ \vert} + \frac{\vert \nabla \varphi^+ \vert^2}{\omega^2 \mu_0 \varepsilon_0}\,,
 \$$
 which can be simplified under the assumption of a negligible $$\vert \nabla^2 \varphi^+ \vert^2 \simeq 0$$ to
 \$$
