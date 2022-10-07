@@ -4,7 +4,7 @@ title: Home
 nav_order: 1
 description:
 permalink: /
-last_modified_date: 2022-09-30T12:10:05+0200
+last_modified_date: 2022-10-07T15:00:36+0200
 ---
 
 ![](/assets/images/logo-eptlib.png)
@@ -38,6 +38,10 @@ EPTlib_app <filename>.toml
 where ```<filename>``` must be replaced with the name of the configuration file for the case of interest.
 
 Details on the set-up of the configuration file are provided in the [Settings](settings) page.
+
+## Tutorial
+
+A tutorial that shows how to use the EPTlib application with Python is available [here](/assets/tutorial/eptlib-tutorial.zip). The tutorial is a short [Jupyter notebook](https://jupyter.org/) where the input pre-processing, the configuration setup and the output post-processing are performed for a simple case study.
 
 ## List of implemented methods
 
