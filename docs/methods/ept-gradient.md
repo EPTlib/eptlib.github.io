@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-gradient
-last_modified_date: 2022-04-14T13:57:12+0200
+last_modified_date: 2023-02-22T12:16:05+0100
 ---
 
 # Gradient EPT
@@ -185,6 +185,6 @@ The input .h5 file containing the data can be downloaded [here](/assets/examples
 ```
 
 The retrieved distribution of the electric conductivity is pictured in the following image, together with the expected distribution and the input maps.
-In order to determine the seed point, it has been assumed that the properties of the phantom background were known.
+In order to determine the seed points (pictured in the output map with small red dots), it has been assumed that the properties of the phantom background were known.
 
 ![](/assets/images/ept-grad.png)
