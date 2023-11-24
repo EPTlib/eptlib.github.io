@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-gradient
-last_modified_date: 2023-02-22T12:16:05+0100
+last_modified_date: 2023-11-24T15:01:25+0100
 ---
 
 # Gradient EPT
@@ -157,7 +157,7 @@ If the seed point is not used, the gradient is inverted with regularization base
 - ```gradient-tolerance``` set the relative tolerance with respect to the maximum gradient for the determination of the homogeneous regions (default: ```0.0```).
 - ```output-mask``` is the address where the homogeneous regions mask will be written. It must be a dataset in an .h5 file. If omitted, the mask will not be stored.
 
-### Other parameters <object name="new" class="label">New!</object>
+### Other parameters
 
 ```toml
 [parameter]

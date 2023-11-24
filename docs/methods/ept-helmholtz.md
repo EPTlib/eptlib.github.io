@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-helmholtz
-last_modified_date: 2022-06-10T11:32:54+0200
+last_modified_date: 2023-11-24T15:01:17+0100
 ---
 
 # Helmholtz EPT
@@ -123,7 +123,7 @@ The following specific settings must be configured.
 
 {% include_relative savitzky-golay.md %}
 
-### Other parameters <object name="new" class="label">New!</object>
+### Other parameters
 
 ```toml
 [parameter]

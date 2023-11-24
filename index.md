@@ -4,13 +4,13 @@ title: Home
 nav_order: 1
 description:
 permalink: /
-last_modified_date: 2023-02-22T12:36:05+0100
+last_modified_date: 2023-11-24T13:30:10+0100
 ---
 
 ![](/assets/images/logo-eptlib.png)
 {: .text-center }
 
-# EPTlib v0.3.3
+# EPTlib v0.4.0
 {: .fs-9 }
 
 EPTlib is an open source, extensible collection of C++ implementations of electric properties tomography (EPT) methods.
@@ -41,7 +41,7 @@ Details on the set-up of the configuration file are provided in the [Settings](s
 
 ## Tutorial
 
-A tutorial that shows how to use the EPTlib application with Python is available [here](/assets/tutorial/eptlib-tutorial.zip). The tutorial is a short [Jupyter notebook](https://jupyter.org/) where the input pre-processing, the configuration setup and the output post-processing are performed for a simple case study.
+A tutorial that shows how to use the EPTlib application with Python is available [here](/assets/tutorial/eptlib-tutorial.zip). The tutorial is a short [Jupyter notebook](https://jupyter.org/) where the input pre-processing, the configuration setup and the result analysis are performed for a simple case study.
 
 ## List of implemented methods
 
@@ -54,6 +54,8 @@ Stable methods:
 
 Experimental methods:
 1. [Phase-based Helmholtz EPT with automatically selected kernels](methods/ept-helmholtz-chi2)
+
+The EPTlib application allows also to apply a post-processing filter at the end of the EPT reconstruction or as a stand-alone filtering procedure.
 
 ## Citations
 

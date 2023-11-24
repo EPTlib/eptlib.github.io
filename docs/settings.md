@@ -4,7 +4,7 @@ title: Settings
 nav_order: 2
 description:
 permalink: /settings
-last_modified_date: 2022-04-14T13:40:03+0200
+last_modified_date: 2023-11-24T14:56:04+0100
 ---
 
 # Configuration file settings
@@ -32,7 +32,7 @@ description = "Just an example of configuration file"
 
 The ```title``` and the ```description``` will appear in the log of the EPTlib application.
 
-## Method <object name="new" class="label">New!</object>
+## Method
 
 ```toml
 method = 0
@@ -60,7 +60,7 @@ Starting from the code 100, the implemented methods are still experimental.
 - ```size``` is the number of voxels of the input data in each direction.
 - ```step``` is the size of a voxel in meters.
 
-## Input
+## Input <object name="new" class="label">New!</object>
 
 ```toml
 [input]
@@ -77,7 +77,8 @@ Starting from the code 100, the implemented methods are still experimental.
 - ```rx-channels``` is the number of receive channels in the input data.
 - ```tx-sensitivity``` is the address of the transmit sensitivity (magnitude). It must be a dataset in an .h5 file.
 - ```trx-phase``` is the address in an .h5 file of the transceive phase in radians. It must be a dataset in an .h5 file.
-- ```wrapped-phase``` is equal to ```true``` if the input transceive phase maps are wrapped. Currently, only the phase-based methods take advantage of it. (default: ```false```).
+- ```wrapped-phase``` is equal to ```true``` if the input transceive phase maps are wrapped. Currently, only the phase-based methods take advantage of it (default: ```false```).
+- ```reference-image``` is the address in an .h5 file of a reference image that can be used by the EPT methods and the postprocessing. It must be a dataset in an .h5 file. If it is an empty string, all the methods will be applied with no reference image (default: empty string).
 
 For some EPT methods, the ```tx-sensitivity``` or the ```trx-phase``` could be optional.
 
@@ -118,6 +119,49 @@ It is possible to change the default wildcard characters, the starting index and
 - ```relative-permittivity``` is the address where the relative permittivity will be written. It must be a dataset in an .h5 file.
 
 If an output address is not provided in the configuration file, the corresponding properties evaluation will not be stored.
+
+## Postprocessing <object name="new" class="label">New!</object>
+
+The following set of instruction is optional. It can be used to apply a filter in postprocessing to the EPT results.
+
+```toml
+[postprocessing]
+    output-electric-conductivity = "example.h5:/sigma-postpro"
+    output-relative-permittivity = "example.h5:/epsr-postpro"
+    perform-only-postprocessing = false
+    input-electric-conductivity = ""
+    input-relative-permittivity = ""
+    input-reference-image = ""
+    input-uncertainty-map = ""
+    kernel-size = [5, 5, 5]
+    kernel-shape = 1
+    weight-param = 0.10
+```
+
+- ```output-electric-conductivity``` is the address where the postprocessed electric conductivity, expressed in siemens per meter, will be written. It must be a dataset in an .h5 file. If it is an empty string, the postprocessing will not be applied to the electric conductivity map (default: empty string).
+- ```output-relative-permittivity``` is the address where the postprocessed relative permittivity will be written. It must be a dataset in an .h5 file. If it is an empty string, the postprocessing will not be applied to the relative permittivity map (default: empty string).
+- ```perform-only-postprocessing``` is equal to ```false``` if the postprocessing must be applied to the result of the EPT method. It is equal to ```true``` if only the postprocessing must be performed in a provided set of input maps (default: ```false```).
+- ```input-electric-conductivity``` is the address of the electric conductivity map to be filtered. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the electric conductivity computed by the EPT method is used as input (default: empty string).
+- ```input-relative-permittivity``` is the address of the relative permittivity map to be filtered. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the relative permittivity computed by the EPT method is used as input (default: empty string).
+- ```input-reference-image``` is the address of the reference image used by the filter. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the reference image provided to the EPT method is used as input, when available (default: empty string).
+- ```input-uncertainty-map``` is the address of the uncertainty map used by the filter. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the uncertainty map estimated by the EPT method is used as input, when available (default: empty string).
+- ```kernel-size``` is the number of voxels along each semi-axis of the filter kernel (default: ```[1,1,1]```).
+- ```kernel-shape``` selects the kernel shape according to the following table (default: ```2```).
+- ```weight-param``` is a parameter of the weight function used for the reference image (default: ```0.10```).
+
+| Code | Shape     | Example with ```size = [2,2,1]```                                        |
+|------+-----------+--------------------------------------------------------------------------|
+| 0    | Cross     | ![](/assets/images/savitzky-golay-cross.png){: style="width:128px"}      |
+| 1    | Ellipsoid | ![](/assets/images/savitzky-golay-ellipsoid.png){: style="width:128px"}  |
+| 2    | Cuboid    | ![](/assets/images/savitzky-golay-cuboid.png){: style="width:159px"}     |
+
+The postprocessing filter is selected according to the following decision tree:
+- If neither the reference image nor the uncertainty map are available, a median filter is applied.
+- If the reference image is available, but the uncertainty map is not, a median filter whose kernel is anatomically adapted is applied.
+- If the reference image is not available, but the uncertainty map is, a moving weighted average is applied, using the reciprocal of the uncertainty map values as weight.
+- If both the reference image and the uncertainty map are available, a moving weighted average whose kernel is anatomically adapted is applied, using the reciprocal of the uncertainty map values as weight.
+
+The filter kernel is anatomically adapted with respect to the reference image according to a hard threshold rule: only the voxels whose relative contrast with respect to the central voxel is lower than ```weight-param``` are kept in the kernel.
 
 ## Parameters
 

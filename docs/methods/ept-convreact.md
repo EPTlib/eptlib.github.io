@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-convreact
-last_modified_date: 2022-04-14T13:57:08+0200
+last_modified_date: 2023-11-24T15:11:23+0100
 ---
 
 # Convection-reaction EPT
