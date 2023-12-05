@@ -4,7 +4,7 @@ title: Settings
 nav_order: 2
 description:
 permalink: /settings
-last_modified_date: 2023-11-24T14:56:04+0100
+last_modified_date: 2023-12-05T11:46:15+0100
 ---
 
 # Configuration file settings
@@ -132,7 +132,8 @@ The following set of instruction is optional. It can be used to apply a filter i
     input-electric-conductivity = ""
     input-relative-permittivity = ""
     input-reference-image = ""
-    input-uncertainty-map = ""
+    input-electric-conductivity-variance-map = ""
+    input-relative-permittivity-variance-map = ""
     kernel-size = [5, 5, 5]
     kernel-shape = 1
     weight-param = 0.10
@@ -144,7 +145,8 @@ The following set of instruction is optional. It can be used to apply a filter i
 - ```input-electric-conductivity``` is the address of the electric conductivity map to be filtered. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the electric conductivity computed by the EPT method is used as input (default: empty string).
 - ```input-relative-permittivity``` is the address of the relative permittivity map to be filtered. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the relative permittivity computed by the EPT method is used as input (default: empty string).
 - ```input-reference-image``` is the address of the reference image used by the filter. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the reference image provided to the EPT method is used as input, when available (default: empty string).
-- ```input-uncertainty-map``` is the address of the uncertainty map used by the filter. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the uncertainty map estimated by the EPT method is used as input, when available (default: empty string).
+- ```input-electric-conductivity-variance-map``` is the address of the electric conductivity variance map used by the filter. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the variance map estimated by the EPT method is used as input, when available (default: empty string).
+- ```input-relative-permittivity-variance-map``` is the address of the relative permittivity variance map used by the filter. It must be a dataset in an .h5 file. It is used only if ```perform-only-postprocessing``` is ```true```, otherwise the variance map estimated by the EPT method is used as input, when available (default: empty string).
 - ```kernel-size``` is the number of voxels along each semi-axis of the filter kernel (default: ```[1,1,1]```).
 - ```kernel-shape``` selects the kernel shape according to the following table (default: ```2```).
 - ```weight-param``` is a parameter of the weight function used for the reference image (default: ```0.10```).
@@ -156,10 +158,10 @@ The following set of instruction is optional. It can be used to apply a filter i
 | 2    | Cuboid    | ![](/assets/images/savitzky-golay-cuboid.png){: style="width:159px"}     |
 
 The postprocessing filter is selected according to the following decision tree:
-- If neither the reference image nor the uncertainty map are available, a median filter is applied.
-- If the reference image is available, but the uncertainty map is not, a median filter whose kernel is anatomically adapted is applied.
-- If the reference image is not available, but the uncertainty map is, a moving weighted average is applied, using the reciprocal of the uncertainty map values as weight.
-- If both the reference image and the uncertainty map are available, a moving weighted average whose kernel is anatomically adapted is applied, using the reciprocal of the uncertainty map values as weight.
+- If neither the reference image nor the variance map are available, a median filter is applied.
+- If the reference image is available, but the variance map is not, a median filter whose kernel is anatomically adapted is applied.
+- If the reference image is not available, but the variance map is, a moving weighted average is applied, using the reciprocal of the variance map values as weight.
+- If both the reference image and the variance map are available, a moving weighted average whose kernel is anatomically adapted is applied, using the reciprocal of the variance map values as weight.
 
 The filter kernel is anatomically adapted with respect to the reference image according to a hard threshold rule: only the voxels whose relative contrast with respect to the central voxel is lower than ```weight-param``` are kept in the kernel.
 

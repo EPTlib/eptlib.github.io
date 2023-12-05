@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-helmholtz
-last_modified_date: 2023-11-24T15:01:17+0100
+last_modified_date: 2023-12-05T11:46:21+0100
 ---
 
 # Helmholtz EPT
@@ -130,7 +130,7 @@ The following specific settings must be configured.
     output-variance = "example.h5:/var"
 ```
 
-- ```output-variance``` is the address where the variance evaluated for the electric conductivity will be written. It must be a dataset in an .h5 file. If omitted, the variance will not be stored (not even evaluated). The variance is evaluated only for the phase-based approximation with an unwrapped phase input.
+- ```output-variance``` is the address where the variance evaluated for the electric properties will be written. It must be a group in an .h5 file. The variance of the electric conductivity, if available, will be written in the group as ```/electric-conductivity```; the variance of the relative permittivity, if available, will be written in the group as ```/relative-permittivity```. If omitted, the variance will not be stored (not even evaluated). For the phase-based approximation, the variance is evaluated only with an unwrapped phase input.
 
 ## Example
 

@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-helmholtz-chi2
-last_modified_date: 2023-11-24T15:11:18+0100
+last_modified_date: 2023-12-05T11:46:44+0100
 ---
 
 # Phase-based Helmholtz EPT with automatically selected kernel
@@ -84,7 +84,7 @@ A list of kernels (characterised by the size and the shape) on which the Savitzk
 ```
 
 - ```unphysical-values``` is equal to ```true``` if unphysical values (i.e., negative values) of the electric conductivity are admitted. (default: ```false```).
-- ```output-variance``` is the address where the variance evaluated for the electric conductivity will be written. It must be a dataset in an .h5 file. If omitted, the variance will not be stored.
+- ```output-variance``` is the address where the variance evaluated for the electric conductivity will be written. It must be a group in an .h5 file. The variance will be written in the group as ```/electric-conductivity```. If omitted, the variance will not be stored.
 
 ## Example
 
