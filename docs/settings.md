@@ -4,7 +4,7 @@ title: Settings
 nav_order: 2
 description:
 permalink: /settings
-last_modified_date: 2023-12-05T11:46:15+0100
+last_modified_date: 2023-12-05T12:11:11+0100
 ---
 
 # Configuration file settings
@@ -70,6 +70,7 @@ Starting from the code 100, the implemented methods are still experimental.
     tx-sensitivity = "phantom.h5:/tx_sens>"
     trx-phase = "phantom.h5:/trx_phase><" # [rad]
     wrapped-phase = false
+    reference-image = "phantom.h5:/ref_img"
 ```
 
 - ```frequency``` is the Larmor frequency of the input data in hertz.
