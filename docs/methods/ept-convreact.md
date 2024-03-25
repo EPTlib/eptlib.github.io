@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-convreact
-last_modified_date: 2023-11-24T15:11:23+0100
+last_modified_date: 2024-03-25T11:09:13+0100
 ---
 
 # Convection-reaction EPT
@@ -116,6 +116,9 @@ The phase-based approximation of the convection-reaction EPT is derived in [[4](
 
 Provided a noisy measurement of the distribution of $$B_1^+$$, or $$\varphi^{\pm}$$, its derivatives can be estimated with a second-order Savitzky-Golay filter [[5](#references)]. It approximates the distribution around the voxel of interest with a paraboloid, of which computes the derivatives. In this way, the Savitzky-Golay filter reduces the impact of noise in the derivatives computation.
 
+{: .warning }
+Current implementations of the complete complex-valued method (and its two-dimensional approximation) are numerically unstable and most of the time leads to wrong reconstructions. The phase-based approximation, instead, is stable and provides good results.
+
 ### References
 {: .no_toc}
 
@@ -159,7 +162,10 @@ The boundary condition set the value of the electric properties at the boundary 
 - ```electric-conductivity``` is the value of the electric conductivity forced at the boundary in siemens per meter (default: ```0.0```).
 - ```relative-permittivity``` is the value of the relative permittivity forced at the boundary (default: ```1.0```).
 
-### Other parameters
+{: .warning }
+The boundary conditions are applied at the interface between tissue and air. The implemented algorithm identifies as air all the voxels in which the input quantity is Not-a-Number, so, before running CR-EPT on your data, take care to set all the voxels in air to Not-a-Number.
+
+### Other parameters <object name="new" class="label">New!</object>
 
 ```toml
 [parameter]
@@ -167,12 +173,16 @@ The boundary condition set the value of the electric properties at the boundary 
     imaging-slice = 3
     artificial-diffusion = true
     artificial-diffusion-coefficient = 0.1
+	max-iterations = 1000
+	tolerance = 1e-6
 ```
 
 - ```volume-tomography``` is equal to ```true``` to solve the three-dimensional problem; otherwise, for the two-dimensional approximation, it is equal to ```false``` (default: ```false```).
 - ```imaging-slice``` is the index of the slice on which the two-dimensional tomography will be performed. It must be set only if ```volume-tomography``` is ```false``` (default: the index of the mid-plane).
 - ```artificial-diffusion``` is equal to ```true``` to add the artificial diffusion term to stabilize the problem; otherwise it is equal to ```false``` (default: ```false```).
 - ```artificial-diffusion-coefficient``` is equal to the value of the artificial diffusion coefficient expressed in tesla (for the complete case) or in radian (for the phase-based approximation). It must be set only if ```artificial-diffusion``` is ```true``` (default: ```0.0```).
+- ```max-iterations``` is equal to the maximum number of iterations the BiCGStab iterative method will perform to solve the linear system of equations obtained by discretizing the CR-EPT equation (default: ```1000```).
+- ```tolerance``` is the tolerance of the BiCGStab iterative solver; the iterations are stopped once a residual equal to or lower than the tolerance is reached (default: ```1e-6```).
 
 ## Example
 
