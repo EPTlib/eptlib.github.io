@@ -4,7 +4,7 @@ title: Settings
 nav_order: 2
 description:
 permalink: /settings
-last_modified_date: 2023-12-05T12:11:11+0100
+last_modified_date: 2024-04-03T14:30:33+0200
 ---
 
 # Configuration file settings
@@ -59,6 +59,13 @@ Starting from the code 100, the implemented methods are still experimental.
 
 - ```size``` is the number of voxels of the input data in each direction.
 - ```step``` is the size of a voxel in meters.
+
+{: .warning }
+Take care that Python h5py package stores the data in row-major order. If you are using Python h5py to create or inspect the input HDF5 datasets, the ```size``` to be reported in the configuration file is the shape of the dataset ordered from the last to the first dimension. It can be obtained like reported in the [tutorial](/assets/tutorial/eptlib-tutorial.zip), where
+```python
+    nn = tx_sens.shape
+    size = nn[::-1]
+```
 
 ## Input <object name="new" class="label">New!</object>
 
