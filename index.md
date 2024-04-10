@@ -4,13 +4,13 @@ title: Home
 nav_order: 1
 description:
 permalink: /
-last_modified_date: 2024-04-03T11:03:25+0200
+last_modified_date: 2024-04-10T14:28:11+0200
 ---
 
 ![](/assets/images/logo-eptlib.png)
 {: .text-center }
 
-# EPTlib v0.4.2
+# EPTlib v0.4.3
 {: .fs-9 }
 
 EPTlib is an open source, extensible collection of C++ implementations of electric properties tomography (EPT) methods.
