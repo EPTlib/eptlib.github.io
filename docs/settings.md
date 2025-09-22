@@ -83,16 +83,16 @@ Starting from the code 100, the implemented methods are still experimental.
 - ```frequency``` is the Larmor frequency of the input data in hertz.
 - ```tx-channels``` is the number of transmit channels in the input data.
 - ```rx-channels``` is the number of receive channels in the input data.
-- ```tx-sensitivity``` is the address of the transmit sensitivity (magnitude). It must be a dataset in an .h5 file.
-- ```trx-phase``` is the address in an .h5 file of the transceive phase in radians. It must be a dataset in an .h5 file.
+- ```tx-sensitivity``` is the address of the transmit (Tx) sensitivity (magnitude). It must be a dataset in an .h5 file.
+- ```trx-phase``` is the address in an .h5 file of the transceive (TRx) phase in radians. It must be a dataset in an .h5 file. Alternatively, it is possible to provide the address of the transmit (Tx) phase in radians with the option ```tx-phase```. It is not possible to define both ```trx-phase``` and ```tx-phase``` in the same configuration file.
 - ```wrapped-phase``` is equal to ```true``` if the input transceive phase maps are wrapped. Currently, only the phase-based methods take advantage of it (default: ```false```).
 - ```reference-image``` is the address in an .h5 file of a reference image that can be used by the EPT methods and the postprocessing. It must be a dataset in an .h5 file. If it is an empty string, all the methods will be applied with no reference image (default: empty string).
 
-For some EPT methods, the ```tx-sensitivity``` or the ```trx-phase``` could be optional.
+For some EPT methods, the ```tx-sensitivity``` or the ```trx-phase``` (or ```tx-phase```) could be optional.
 
 In case of multiple transmit channels, the wildcard character ```>``` is used in the ```tx-sensitivity``` address in order to distinguish the data from each channel. It will be replaced by an increasing integer number from zero up to the number of transmit channels minus one.
 
-Similarly, multiple receive channels are distinguished in the ```trx-phase``` address by means of the wildcard character ```<```, which will be replaced by an increasing integer number from zero up to the number of receive channels minus one.
+Similarly, multiple receive channels are distinguished in the ```trx-phase``` (or ```tx-phase```) address by means of the wildcard character ```<```, which will be replaced by an increasing integer number from zero up to the number of receive channels minus one.
 
 For example, with the previous input settings the transmit sensitivity data would be read from \\
 ```"phantom.h5:/tx_sens0"``` \\
