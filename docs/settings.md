@@ -45,7 +45,7 @@ The ```method``` is selected according to the following table.
 | 0    | [Helmholtz EPT](methods/ept-helmholtz)                                                     |
 | 1    | [Convection-reaction EPT](methods/ept-convreact)                                           |
 | 2    | [Gradient EPT](methods/ept-gradient)                                                       |
-| 100  | [Phase-based Helmholtz EPT with automatically selected kernel](methods/ept-helmholtz-chi2) |
+| 100  | [Helmholtz EPT with automatically selected kernel](methods/ept-helmholtz-chi2) |
 
 Starting from the code 100, the implemented methods are still experimental.
 

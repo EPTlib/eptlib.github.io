@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Phase-based Helmholtz EPT with automatically selected kernel
+title: Helmholtz EPT with automatically selected kernel
 nav_order: 20
 parent: Methods
 usemathjax: true
@@ -9,7 +9,7 @@ permalink: /methods/ept-helmholtz-chi2
 last_modified_date: 2023-12-05T11:46:44+0100
 ---
 
-# Phase-based Helmholtz EPT with automatically selected kernel
+# Helmholtz EPT with automatically selected kernel
 {: .no_toc .fs-9 }
 
 Experimental
@@ -25,18 +25,14 @@ Experimental
 
 ## Theory
 
-The implemented method is based on the phase-based approximation of [Helmholtz EPT](/methods/ept-helmholtz), that retrieves the electric conductivity from the transceive phase input according to the relation
-\$$
-\sigma = \frac{\nabla^2 \varphi^{\pm} }{2 \omega \mu_0}\,.
-\$$
-In this case, besides a constant multiplicative coefficient, the estimation of the electric conductivity $$\sigma$$ consists in the evaluation of the Laplacian of the transceive phase $$\varphi^\pm$$.
+The implemented method is based on [Helmholtz EPT](/methods/ept-helmholtz), where the estimation of the electric properties consists in the evaluation of the Laplacian of the input map.
 
-The Laplacian of the noisy acquisition of $$\varphi^\pm$$ is estimated numerically with a Savitzky-Golay filter [[1](#references)]. It approximates the phase map around the voxel of interest with a paraboloid (or a higher order polynomial), of which computes the derivatives. In this way, the Savitzky-Golay filter reduces the impact of noise in the Laplacian computation.
+The Laplacian of the noisy input map is estimated numerically with a Savitzky-Golay filter [[1](#references)]. It approximates the map around the voxel of interest with a paraboloid (or a higher order polynomial), of which computes the derivatives. In this way, the Savitzky-Golay filter reduces the impact of noise in the Laplacian computation.
 
 The polynomial fitting on which the Savitzky-Golay filter is based depends on the definition of a kernel of voxels around the voxel of interest. The kernel should be large enough to reduce the noise propagation, but not too large to include voxels from adjacent tissues. In the latter case, the assumption of local homogeneity on which Helmholtz EPT relies would not hold and, therefore, large systematic errors would appear.
-This implementation of the phase-based Helmholtz EPT looks automatically for the optimal kernel given a set of options.
+This implementation of Helmholtz EPT looks automatically for the optimal kernel given a set of options.
 
-In each voxel, the kernel is selected assuring that the estimated conductivity is physically admissible (i.e., non-negative) and that the uncertainty associated with the estimated conductivity is minimum. The uncertainty is evaluated by propagating it through the fitting under the assumption of independent and identically distributed noise in each voxel of the acquired phase map.
+In each voxel, the kernel is selected assuring that the estimated properties are physically admissible (i.e., positive conductivity and larger than one permittivity) and that the uncertainty associated with the estimated property value is minimum. The uncertainty is evaluated by propagating it through the fitting under the assumption of independent and identically distributed noise in each voxel of the acquired input map.
 
 ### References
 {: .no_toc}
@@ -46,7 +42,8 @@ In each voxel, the kernel is selected assuring that the estimated conductivity i
 
 ## Settings
 
-Being a phase-based method, the [input address](/settings#input) ```trx-phase``` must be set.
+Just one [input address](/settings#input) between ```tx-sensitivity``` and ```trx-phase``` can be set.
+If both the addresses are provided, then the complete Helmholtz EPT method will be applied. Otherwise, the approximated method that makes use only of the provided input data will be applied.
 
 Moreover, ```tx-channel``` and ```rx-channel``` must be equal to 1.
 
@@ -67,7 +64,7 @@ A list of kernels (characterised by the size and the shape) on which the Savitzk
 - ```sizes``` is the list of the sizes of the kernels. The size defines the number of voxels along each semi-axis of the kernel. This setting is mandatory.
 - ```shapes``` is the list of the shapes of the kernels. The shape is defined according to the following table. This setting is mandatory.
 - ```degree``` is the degree of the interpolating polynomial. It is the same for all the kernels. It must be at least 2 (default: ```2```).
-- ```output-index``` is the address where the map of the selected kernels will be written. It must be a dataset in an .h5 file. The map contains in each voxel the index of the selected kernel ordered as in the ```sizes``` and ```shapes``` lists starting from the index 0. If omitted, the map will not be stored.
+- ```output-index``` is the address where the map of the selected kernels will be written. It must be a group in an .h5 file. The map contains in each voxel the index of the selected kernel ordered as in the ```sizes``` and ```shapes``` lists starting from the index 0. Index -1 appears when no kernel is selected. The index map of the electric conductivity, if available, will be written in the group as ```/electric-conductivity```; the index map of the relative permittivity, if available, will be written in the group as ```/relative-permittivity```. If omitted, the map will not be stored.
 
 | Code | Shape     | Example with ```size = [2,2,1]```                                        |
 |------+-----------+--------------------------------------------------------------------------|
@@ -83,8 +80,8 @@ A list of kernels (characterised by the size and the shape) on which the Savitzk
     output-variance = "example.h5:/var"
 ```
 
-- ```unphysical-values``` is equal to ```true``` if unphysical values (i.e., negative values) of the electric conductivity are admitted. (default: ```false```).
-- ```output-variance``` is the address where the variance evaluated for the electric conductivity will be written. It must be a group in an .h5 file. The variance will be written in the group as ```/electric-conductivity```. If omitted, the variance will not be stored.
+- ```unphysical-values``` is equal to ```true``` if unphysical values (i.e., negative conductivity and lower than one permittivity) are admitted. (default: ```false```).
+- ```output-variance``` is the address where the variance evaluated for the electric properties will be written. It must be a group in an .h5 file. The variance of the electric conductivity, if available, will be written in the group as ```/electric-conductivity```; the variance of the relative permittivity, if available, will be written in the group as ```/relative-permittivity```. If omitted, the variance will not be stored.
 
 ## Example
 
