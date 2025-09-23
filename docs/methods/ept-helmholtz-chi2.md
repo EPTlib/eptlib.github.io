@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-helmholtz-chi2
-last_modified_date: 2023-12-05T11:46:44+0100
+last_modified_date: 2025-09-23T09:52:57+0200
 ---
 
 # Helmholtz EPT with automatically selected kernel

@@ -4,7 +4,7 @@ title: Settings
 nav_order: 2
 description:
 permalink: /settings
-last_modified_date: 2024-04-03T14:33:05+0200
+last_modified_date: 2025-09-23T09:52:21+0200
 ---
 
 # Configuration file settings

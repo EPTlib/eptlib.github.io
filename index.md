@@ -4,7 +4,7 @@ title: Home
 nav_order: 1
 description:
 permalink: /
-last_modified_date: 2024-08-29T10:31:29+0200
+last_modified_date: 2025-09-23T09:52:49+0200
 ---
 
 ![](/assets/images/logo-eptlib.png)
