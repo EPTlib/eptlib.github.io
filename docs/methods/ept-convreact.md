@@ -6,7 +6,7 @@ parent: Methods
 usemathjax: true
 description:
 permalink: /methods/ept-convreact
-last_modified_date: 2024-03-25T11:09:13+0100
+last_modified_date: 2026-09-04T17:29:00+0200
 ---
 
 # Convection-reaction EPT
@@ -149,18 +149,20 @@ The following specific settings must be configured.
 
 {% include_relative savitzky-golay.md %}
 
-### Boundary condition
+### Boundary condition <object name="new" class="label">New!</object>
 
 The boundary condition set the value of the electric properties at the boundary of the domain.
 
 ```toml
 [parameter.dirichlet]
+    use-dirichlet = true
     electric-conductivity = 0.1 # [S/m]
     relative-permittivity = 50.0
 ```
 
-- ```electric-conductivity``` is the value of the electric conductivity forced at the boundary in siemens per meter (default: ```0.0```).
-- ```relative-permittivity``` is the value of the relative permittivity forced at the boundary (default: ```1.0```).
+- ```use-dirichlet``` is equal to ```true``` to use Dirichlet boundary conditions, with the values set by the other two parameters of this table; if equal to ```false``` homogeneous Neumann boundary conditions will be used (default: ```true```).
+- ```electric-conductivity``` is the value of the electric conductivity forced at the boundary in siemens per meter if ```use-dirichlet``` is ```true``` (default: ```0.0```).
+- ```relative-permittivity``` is the value of the relative permittivity forced at the boundary if ```use-dirichlet``` is ```true``` (default: ```1.0```).
 
 {: .warning }
 The boundary conditions are applied at the interface between tissue and air. The implemented algorithm identifies as air all the voxels in which the input quantity is Not-a-Number, so, before running CR-EPT on your data, take care to set all the voxels in air to Not-a-Number.
